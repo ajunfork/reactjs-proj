@@ -7,13 +7,17 @@ import Styles from "./style.module.scss";
 const SignIn = () => {
   return (
     <section className={`${Styles.formContainer} flex flex-row`}>
-      <div className='w-1/2'>
-        <Title formTitle='Sign in to your Account' />
-        <Form inputLabel='Email Address' />
-        <Form inputLabel='Password' />
+      <div
+        className={`h-screen w-1/2 flex flex-col justify-center items-center`}
+      >
+        <Title formTitle='Welcome Back' />
+        <form action='' className={`flex flex-col justify-start items-start`}>
+          <Form inputLabel='Email Address' required={false} />
+          <Form inputLabel='Password' required={false} />
+        </form>
       </div>
-      <div>
-        <FormImage className='w-1/2' />
+      <div className='w-1/2'>
+        <FormImage />
       </div>
     </section>
   );

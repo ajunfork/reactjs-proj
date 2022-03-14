@@ -13,11 +13,13 @@ export default Title;
 
 export const Form = props => {
   return (
-    <div>
-      <form action=''>
+    <div className={`flex flex-col justify-start items-start`}>
+      {props.required ? (
+        <InputLabelRequired label={props.inputLabel} />
+      ) : (
         <InputLabel label={props.inputLabel} />
-        <InputField />
-      </form>
+      )}
+      <InputField />
     </div>
   );
 };
@@ -39,6 +41,19 @@ const InputLabel = props => {
         className={`font-sans font-medium not-italic text-sm leading-[22px]`}
       >
         {props.label}
+      </span>
+    </>
+  );
+};
+
+const InputLabelRequired = props => {
+  return (
+    <>
+      <span
+        className={`font-sans font-medium not-italic text-sm leading-[22px]`}
+      >
+        {props.label}
+        <sup className={`text-red-600 font-extrabold`}>*</sup>
       </span>
     </>
   );

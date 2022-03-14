@@ -7,15 +7,19 @@ import Styles from "./style.module.scss";
 const SignUp = () => {
   return (
     <section className={`${Styles.formContainer} flex flex-row`}>
-      <div className='w-1/2'>
+      <div
+        className={`h-screen w-1/2 flex flex-col justify-center items-center`}
+      >
         <Title formTitle='Create your Account' />
-        <Form inputLabel='Email Address' />
-        <Form inputLabel='Full Name' />
-        <Form inputLabel='Your Role' />
-        <Form inputLabel='Password' />
+        <form action='' className={`flex flex-col justify-start items-start`}>
+          <Form inputLabel='Email Address' required='true' />
+          <Form inputLabel='Full Name' required={true} />
+          <Form inputLabel='Your Role' required={true} />
+          <Form inputLabel='Password' required={true} />
+        </form>
       </div>
-      <div>
-        <FormImage className='w-1/2' />
+      <div className='w-1/2'>
+        <FormImage />
       </div>
     </section>
   );
