@@ -31,6 +31,9 @@ const Routers = () => {
         </ul>
         <Header />
         <Switch>
+          <Route path='/reactjs-proj' exact>
+            <SignUp />
+          </Route>
           <Route path='/dashboard'>
             <Dashboard />
           </Route>
