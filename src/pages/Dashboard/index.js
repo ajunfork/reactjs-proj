@@ -13,6 +13,7 @@ import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
 import { Disclosure } from "@headlessui/react";
+import Logo from "../../assets/images/Logo.png";
 import React from "react";
 import { SearchIcon } from "@heroicons/react/solid";
 import Styles from "./style.module.scss";
@@ -100,7 +101,7 @@ const navigation = [
       { name: "Settings", href: "#" },
     ],
   },
-  { name: "Messages", href: "#", icon: ChartBarIcon, current: false },
+  { name: "Messages", href: "#", icon: ChartBarIcon, current: false, count: 4 },
   { name: "Inbox", href: "#", icon: ChartBarIcon, current: false },
   { name: "Calendar", href: "#", icon: ChartBarIcon, current: false },
   { name: "Campaigns", href: "#", icon: ChartBarIcon, current: false },
@@ -243,11 +244,7 @@ export function Example() {
                   </div>
                 </Transition.Child>
                 <div className='flex-shrink-0 flex items-center px-4'>
-                  <img
-                    className='h-8 w-auto'
-                    src='https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg'
-                    alt='Workflow'
-                  />
+                  <img className='h-8 w-auto' src={Logo} alt='mosaic' />
                 </div>
                 <div className='mt-5 flex-1 h-0 overflow-y-auto'>
                   <nav className='px-2 space-y-1'>
@@ -289,11 +286,7 @@ export function Example() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className='flex-1 flex flex-col min-h-0 bg-gray-800'>
             <div className='flex items-center h-16 flex-shrink-0 px-4 bg-gray-900'>
-              <img
-                className='h-8 w-auto'
-                src='https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg'
-                alt='Workflow'
-              />
+              <img className='h-8 w-auto' src={Logo} alt='mosaic logo' />
             </div>
             <div className='flex-1 flex flex-col overflow-y-auto'>
               <nav className='flex-1 px-2 py-4 space-y-1'>
@@ -319,6 +312,18 @@ export function Example() {
                         aria-hidden='true'
                       />
                       {item.name}
+                      {item.count ? (
+                        <span
+                          className={classNames(
+                            item.current
+                              ? "bg-blue"
+                              : "bg-[#6366F1] group-hover:bg-gray-200",
+                            "ml-3 inline-block py-1 px-2 text-xs font-medium rounded-md"
+                          )}
+                        >
+                          {item.count}
+                        </span>
+                      ) : null}
                     </a>
                   ) : (
                     <Disclosure as='div' key={item.name} className='space-y-1'>
@@ -327,8 +332,8 @@ export function Example() {
                           <Disclosure.Button
                             className={classNames(
                               item.current
-                                ? "bg-gray-100 text-gray-900"
-                                : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                                ? "bg-gray-900 text-white"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
                               "group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             )}
                           >
@@ -359,7 +364,7 @@ export function Example() {
                                 key={subItem.name}
                                 as='a'
                                 href={subItem.href}
-                                className='group w-full flex items-center pl-11 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50'
+                                className='group w-full flex items-center pl-11 pr-2 py-2 text-sm font-medium  rounded-md text-gray-300 hover:bg-gray-700 hover:text-white'
                               >
                                 {subItem.name}
                               </Disclosure.Button>
@@ -401,6 +406,18 @@ export function Example() {
                         aria-hidden='true'
                       />
                       {item.name}
+                      {item.count ? (
+                        <span
+                          className={classNames(
+                            item.current
+                              ? "bg-white"
+                              : "bg-gray-100 group-hover:bg-gray-200",
+                            "ml-3 inline-block py-0.5 px-3 text-xs font-medium rounded-full"
+                          )}
+                        >
+                          {item.count}
+                        </span>
+                      ) : null}
                     </a>
                   ))}
                 </nav>
@@ -495,7 +512,7 @@ export function Example() {
             <div className='py-6'>
               <div className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
                 <h1 className='text-2xl font-semibold text-gray-900'>
-                  Dashboard
+                  Acne Inc.
                 </h1>
               </div>
               <div className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
