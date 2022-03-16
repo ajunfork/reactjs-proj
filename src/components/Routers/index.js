@@ -17,7 +17,7 @@ const Routers = () => {
   return (
     <div>
       <Router>
-        <ul className={Styles.navLinks}>
+        <ul className={`${Styles.navLinks} fixed top-0`}>
           {/* <li> */}
           <NavLink to='/dashboard' activeClassName={Styles.active}>
             Dashboard

@@ -1,11 +1,34 @@
 import {
-  BellIcon,
+  AnnotationIcon,
+  ArrowRightIcon,
+  ArrowSmDownIcon,
+  ArrowSmUpIcon,
+  CheckCircleIcon,
+  PaperClipIcon,
+  PencilIcon,
+  TrashIcon,
+} from "@heroicons/react/solid";
+import {
+  BriefcaseIcon,
   CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
+  CashIcon,
+  ChartPieIcon,
+  ChatAlt2Icon,
+  ChatAltIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  ClipboardListIcon,
+  CogIcon,
   HomeIcon,
-  InboxIcon,
+  InboxInIcon,
+  InformationCircleIcon,
+  LockOpenIcon,
   MenuAlt2Icon,
+  QuestionMarkCircleIcon,
+  SearchIcon,
+  ShoppingCartIcon,
+  SparklesIcon,
+  SupportIcon,
   UsersIcon,
   XIcon,
 } from "@heroicons/react/outline";
@@ -13,10 +36,28 @@ import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
 import { Disclosure } from "@headlessui/react";
+import HeaderImage from "../../assets/images/Header-image.png";
 import Logo from "../../assets/images/Logo.png";
+import Play from "../../assets/images/play.png";
 import React from "react";
-import { SearchIcon } from "@heroicons/react/solid";
+import RightCarat1 from "../../assets/images/right-caret-1.png";
+import RightCarat2 from "../../assets/images/right-carat-2.png";
+import RightCarat3 from "../../assets/images/right-carat-3.png";
 import Styles from "./style.module.scss";
+import barChart from "../../assets/images/chart-last5th-left.png";
+import customerImage1 from "../../assets/images/customer-image1.png";
+import customerImage2 from "../../assets/images/customer-image2.png";
+import customerImage3 from "../../assets/images/customer-image3.png";
+import customerImage4 from "../../assets/images/customer-image4.png";
+import customerImage5 from "../../assets/images/customer-image5.png";
+import decrease from "../../assets/images/decrease.svg";
+import increase from "../../assets/images/increase.svg";
+import lineChart from "../../assets/images/line-chart-last5th-right.png";
+import lineChart1 from "../../assets/images/line-chart1.png";
+import lineChart2 from "../../assets/images/line-chart2.png";
+import lineChart3 from "../../assets/images/line-chart3.png";
+import notApplicable from "../../assets/images/not-applicable.svg";
+import pieChart from "../../assets/images/pie-chart.png";
 
 const Dashboard = () => {
   return (
@@ -44,7 +85,7 @@ const navigation = [
   {
     name: "E-Commerce",
     href: "#",
-    icon: UsersIcon,
+    icon: ShoppingCartIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -56,7 +97,7 @@ const navigation = [
   {
     name: "Community",
     href: "#",
-    icon: FolderIcon,
+    icon: UsersIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -68,7 +109,7 @@ const navigation = [
   {
     name: "Finance",
     href: "#",
-    icon: CalendarIcon,
+    icon: CashIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -80,7 +121,7 @@ const navigation = [
   {
     name: "Job Board",
     href: "#",
-    icon: InboxIcon,
+    icon: BriefcaseIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -92,7 +133,7 @@ const navigation = [
   {
     name: "Tasks",
     href: "#",
-    icon: ChartBarIcon,
+    icon: ClipboardListIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -101,14 +142,14 @@ const navigation = [
       { name: "Settings", href: "#" },
     ],
   },
-  { name: "Messages", href: "#", icon: ChartBarIcon, current: false, count: 4 },
-  { name: "Inbox", href: "#", icon: ChartBarIcon, current: false },
-  { name: "Calendar", href: "#", icon: ChartBarIcon, current: false },
-  { name: "Campaigns", href: "#", icon: ChartBarIcon, current: false },
+  { name: "Messages", href: "#", icon: ChatAltIcon, current: false, count: 4 },
+  { name: "Inbox", href: "#", icon: InboxInIcon, current: false },
+  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
+  { name: "Campaigns", href: "#", icon: SparklesIcon, current: false },
   {
     name: "Settings",
     href: "#",
-    icon: ChartBarIcon,
+    icon: CogIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -120,7 +161,7 @@ const navigation = [
   {
     name: "Utility",
     href: "#",
-    icon: ChartBarIcon,
+    icon: QuestionMarkCircleIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -140,7 +181,7 @@ const secondaryNavigation = [
   {
     name: "Authentication",
     href: "#",
-    icon: UsersIcon,
+    icon: LockOpenIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -152,7 +193,7 @@ const secondaryNavigation = [
   {
     name: "Onboarding",
     href: "#",
-    icon: FolderIcon,
+    icon: SupportIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -164,7 +205,7 @@ const secondaryNavigation = [
   {
     name: "Components",
     href: "#",
-    icon: CalendarIcon,
+    icon: ChartPieIcon,
     current: false,
     children: [
       { name: "Overview", href: "#" },
@@ -425,7 +466,7 @@ export function Example() {
             </div>
           </div>
         </div>
-        <div className='md:pl-64 flex flex-col'>
+        <div className='md:pl-64 flex flex-col relative top-9'>
           <div className='sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow'>
             <button
               type='button'
@@ -435,33 +476,31 @@ export function Example() {
               <span className='sr-only'>Open sidebar</span>
               <MenuAlt2Icon className='h-6 w-6' aria-hidden='true' />
             </button>
-            <div className='flex-1 px-4 flex justify-between'>
-              <div className='flex-1 flex'>
-                <form className='w-full flex md:ml-0' action='#' method='GET'>
-                  <label htmlFor='search-field' className='sr-only'>
-                    Search
-                  </label>
-                  <div className='relative w-full text-gray-400 focus-within:text-gray-600'>
-                    <div className='absolute inset-y-0 left-0 flex items-center pointer-events-none'>
-                      <SearchIcon className='h-5 w-5' aria-hidden='true' />
-                    </div>
-                    <input
-                      id='search-field'
-                      className='block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm'
-                      placeholder='Search'
-                      type='search'
-                      name='search'
-                    />
-                  </div>
-                </form>
-              </div>
+            <div className='flex-1 px-4 flex justify-end'>
               <div className='ml-4 flex items-center md:ml-6'>
                 <button
                   type='button'
                   className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                 >
-                  <span className='sr-only'>View notifications</span>
-                  <BellIcon className='h-6 w-6' aria-hidden='true' />
+                  <span className='sr-only'>Search</span>
+                  <SearchIcon className='h-6 w-6' aria-hidden='true' />
+                </button>
+                <button
+                  type='button'
+                  className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                >
+                  <span className='sr-only'>Your chats</span>
+                  <ChatAlt2Icon className='h-6 w-6' aria-hidden='true' />
+                </button>
+                <button
+                  type='button'
+                  className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                >
+                  <span className='sr-only'>Information</span>
+                  <InformationCircleIcon
+                    className='h-6 w-6'
+                    aria-hidden='true'
+                  />
                 </button>
 
                 {/* Profile dropdown */}
@@ -471,9 +510,11 @@ export function Example() {
                       <span className='sr-only'>Open user menu</span>
                       <img
                         className='h-8 w-8 rounded-full'
-                        src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+                        src={Play}
                         alt=''
-                      />
+                      />{" "}
+                      Acne Inc.{" "}
+                      <ChevronDownIcon className='h-6 w-6' aria-hidden='true' />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -508,17 +549,1120 @@ export function Example() {
             </div>
           </div>
 
-          <main className='flex-1'>
+          <main className='flex-1 bg-[#F1F5F9]'>
             <div className='py-6'>
-              <div className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
-                <h1 className='text-2xl font-semibold text-gray-900'>
-                  Acne Inc.
-                </h1>
-              </div>
-              <div className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
+              <div className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6'>
                 {/* Replace with your content */}
-                <div className='py-4'>
-                  <div className='border-4 border-dashed border-gray-200 rounded-lg h-96' />
+                {/* Header section starts here */}
+                <div className='relative bg-indigo-800'>
+                  <div className='absolute inset-0'>
+                    <img
+                      className='w-full h-full object-cover'
+                      src={HeaderImage}
+                      alt=''
+                    />
+                    <div
+                      className='absolute inset-0 bg-indigo-800 mix-blend-multiply'
+                      aria-hidden='true'
+                    />
+                  </div>
+                  <div className='relative max-w-7xl mx-auto py-24 px-4 sm:py-5 sm:px-6 lg:px-8'>
+                    <h1 className='text-[30px] font-extrabold tracking-tight text-white sm:text-[30px] lg:text-[30px] leading-10'>
+                      Good afternoon, Acne Inc. 👋
+                    </h1>
+                    <p className='mt-6 text-xl text-indigo-100 max-w-3xl'>
+                      Here is what’s happening with your projects today:
+                    </p>
+                  </div>
+                </div>
+                {/* Header section ends here */}
+                {/* Stats starts here */}
+                <div>
+                  <dl className='mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3'>
+                    {stats.map(item => (
+                      <div
+                        key={item.id}
+                        className='relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden'
+                      >
+                        <dt className={`flex flex-col gap-2`}>
+                          <div className=''>
+                            <img
+                              className='h-6 w-6 text-white'
+                              aria-hidden='true'
+                              src={item.icon}
+                              alt=''
+                            />
+                          </div>
+                          <p className='text-xl font-medium text-gray-900 truncate'>
+                            {item.name}
+                          </p>
+                          <p className='text-sm font-medium text-gray-500 truncate'>
+                            {item.title}
+                          </p>
+                        </dt>
+                        <dd className='pb-6 flex items-baseline sm:pb-7'>
+                          <p className='text-3xl leading-10 font-semibold text-gray-900'>
+                            {item.stat}
+                          </p>
+
+                          <p
+                            className={`${classNames2(
+                              item.changeType === "increase"
+                                ? "text-green-600 py-1 px-2 bg-green-100"
+                                : "text-red-600 py-1 px-2 bg-red-100",
+                              "ml-2 flex items-baseline text-sm font-semibold"
+                            )} relative -top-4 left-2`}
+                          >
+                            {item.changeType === "increase" ? (
+                              <ArrowSmUpIcon
+                                className='self-center flex-shrink-0 h-5 w-5 text-green-500 bg-green-100'
+                                aria-hidden='true'
+                              />
+                            ) : (
+                              <ArrowSmDownIcon
+                                className='self-center flex-shrink-0 h-5 w-5 text-red-500 bg-red-100'
+                                aria-hidden='true'
+                              />
+                            )}
+
+                            <span className='sr-only'>
+                              {item.changeType === "increase"
+                                ? "Increased"
+                                : "Decreased"}{" "}
+                              by
+                            </span>
+                            {item.change}
+                          </p>
+                        </dd>
+                        <img src={item.lineChart} alt='' />
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                {/* Stats ends here */}
+                {/* Last 5th table starts here */}
+                <div className='flex justify-between gap-4 w-full'>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Direct VS Indirect<div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Direct VS Indirect
+                        </h1>
+                      </div>
+                    </div>
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          {/* <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'> */}
+                          {/* <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table> */}
+                          {/* </div> */}
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Direct VS Indirect
+                              </h1>
+                            </div>
+                          </div>
+                          <div className={`flex flex-wrap`}>
+                            <h2>$1.7K Direct</h2>
+                            <h2>$2.4K Indirect</h2>
+                          </div>
+                          <div>
+                            <img
+                              src={barChart}
+                              alt='research shows huge growth in business'
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          AVG Order Value
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          {/* <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'> */}
+                          {/* <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table> */}
+                          {/* </div> */}
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                AVG Order Value
+                              </h1>
+                            </div>
+                          </div>
+                          <div className={`flex flex-wrap`}>
+                            <h2>$1.7K Direct</h2>
+                            <h2>$2.4K Indirect</h2>
+                          </div>
+                          <div>
+                            <img
+                              src={lineChart}
+                              alt='research shows huge growth in business'
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Last 5th table ends here */}
+                {/* Last 4th table starts here */}
+                <div className='flex justify-between gap-4'>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[33%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Top Countries
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='min-w-full py-2 align-middle md:px-6 lg:px-8 flex flex-col justify-between'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Top Countries
+                              </h1>
+                            </div>
+                          </div>
+                          <img src={pieChart} alt='' />
+                          <div className={`flex flex-row gap-4`}>
+                            <button
+                              type='button'
+                              className='inline-flex items-center px-3 py-2 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-800 border-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            >
+                              <CheckCircleIcon
+                                className='-ml-0.5 mr-2 h-4 w-4'
+                                aria-hidden='true'
+                              />
+                              United States
+                            </button>
+                            <button
+                              type='button'
+                              className='inline-flex items-center px-3 py-2 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-800 border-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            >
+                              <CheckCircleIcon
+                                className='-ml-0.5 mr-2 h-4 w-4'
+                                aria-hidden='true'
+                              />
+                              Italy
+                            </button>
+                            <button
+                              type='button'
+                              className='inline-flex items-center px-3 py-2 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-800 border-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            >
+                              <CheckCircleIcon
+                                className='-ml-0.5 mr-2 h-4 w-4'
+                                aria-hidden='true'
+                              />
+                              Other
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[66%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Top Channels
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Top Channels
+                              </h1>
+                            </div>
+                          </div>
+                          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+                            <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Source
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Visitors
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Revenues
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Sales
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Conversions
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people4.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.source}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.visitors}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.revenues}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.sales}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.conversions}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Last 4th table ends here */}
+                {/* Last 3rd table starts here */}
+                <div className='flex justify-between gap-4 w-full'>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Sales Over Time ( all stores )
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Sales Over Time ( all stores )
+                              </h1>
+                            </div>
+                          </div>
+                          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+                            <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Sales VS Refunds
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Sales VS Refunds
+                              </h1>
+                            </div>
+                          </div>
+                          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+                            <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Last 3rd table ends here */}
+                {/* Last 2nd table starts here */}
+                <div className='flex justify-between gap-4 w-full'>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Customers
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8'>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Customers
+                              </h1>
+                            </div>
+                          </div>
+                          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+                            <table className='min-w-full divide-y divide-gray-300'>
+                              {/* <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead> */}
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='px-4 sm:px-6 lg:px-8 w-[50%] bg-white'>
+                    {/* <div className='sm:flex sm:items-center'>
+                      <div className='sm:flex-auto'>
+                        <h1 className='text-xl font-semibold text-gray-900'>
+                          Reason for Refunds
+                        </h1>
+                      </div>
+                    </div> */}
+                    <div className='mt-8 flex flex-col'>
+                      <div className='-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 '>
+                        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+                          <div className='sm:flex sm:items-center'>
+                            <div className='sm:flex-auto'>
+                              <h1 className='text-xl font-semibold text-gray-900'>
+                                Reason for Refunds
+                              </h1>
+                            </div>
+                          </div>
+                          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+                            <table className='min-w-full divide-y divide-gray-300'>
+                              <thead className='bg-gray-50'>
+                                <tr>
+                                  <th
+                                    scope='col'
+                                    className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
+                                  >
+                                    Name
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Email
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Spent
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                                  >
+                                    Country
+                                  </th>
+                                  <th
+                                    scope='col'
+                                    className='relative py-3.5 pl-3 pr-4 sm:pr-6'
+                                  >
+                                    <span className='sr-only'>Edit</span>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className='divide-y divide-gray-200 bg-white'>
+                                {people.map(person => (
+                                  <tr key={person.email}>
+                                    <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6'>
+                                      <div className='flex items-center'>
+                                        <div className='h-10 w-10 flex-shrink-0'>
+                                          {person.image}
+                                        </div>
+                                        <div className='ml-4'>
+                                          <div className='font-medium text-gray-900'>
+                                            {person.name}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-900'>
+                                        {person.email}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      <div className='text-gray-500'>
+                                        {person.spent}
+                                      </div>
+                                    </td>
+                                    <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                                      {person.role}
+                                    </td>
+                                    <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
+                                      {person.country}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Last 2nd table ends here */}
+                <div className='flex justify-between gap-4 w-full'>
+                  {/* Activity list (smallest breakpoint only) */}
+                  <div className='shadow sm:hidden w-[50%] bg-white'>
+                    <div className='px-4 sm:px-6 lg:px-8'>
+                      <div className='sm:flex sm:items-center'>
+                        <div className='sm:flex-auto'>
+                          <h1 className='text-xl font-semibold text-gray-900'>
+                            Recent Activity
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <ul
+                      role='list'
+                      className='mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden'
+                    >
+                      {transactions.map(transaction => (
+                        <li key={transaction.id}>
+                          <a
+                            href={transaction.href}
+                            className='block px-4 py-4 bg-white hover:bg-gray-50'
+                          >
+                            <span className='flex items-center space-x-4'>
+                              <span className='flex-1 flex space-x-2 truncate'>
+                                {transaction.status !== "not applicable" ? (
+                                  transaction.status === "increase" ? (
+                                    <img src={increase} alt='' />
+                                  ) : (
+                                    <img src={decrease} alt='' />
+                                  )
+                                ) : (
+                                  <img src={notApplicable} alt='' />
+                                )}
+                                <span className='flex flex-col text-gray-500 text-sm truncate'>
+                                  <span className='truncate'>
+                                    {transaction.name}
+                                  </span>
+                                  <span>
+                                    <span className='text-[#6366F1] font-medium'>
+                                      {transaction.view}
+                                      <ArrowRightIcon
+                                        className={`inline w-4`}
+                                      />
+                                    </span>
+                                  </span>
+                                  <time dateTime={transaction.datetime}>
+                                    {transaction.date}
+                                  </time>
+                                </span>
+                              </span>
+                              <ChevronRightIcon
+                                className='flex-shrink-0 h-5 w-5 text-gray-400'
+                                aria-hidden='true'
+                              />
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Activity table (small breakpoint and up) */}
+                  <div className='hidden sm:block w-[50%] bg-white'>
+                    <div className='px-4 sm:px-6 lg:px-8'>
+                      <div className='sm:flex sm:items-center'>
+                        <div className='sm:flex-auto'>
+                          <h1 className='text-xl font-semibold text-gray-900'>
+                            Recent Activity
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='max-w-6xl mx-auto'>
+                      <div className='flex flex-col mt-2'>
+                        <div className='align-middle min-w-full overflow-x-auto shadow overflow-hidden sm:rounded-lg'>
+                          <table className='min-w-full divide-y divide-gray-200'>
+                            <thead>
+                              <tr>
+                                <th
+                                  className='px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider col-span-2'
+                                  scope='col'
+                                >
+                                  Today
+                                </th>
+
+                                {/* <th className='px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'></th> */}
+                              </tr>
+                            </thead>
+                            <tbody className='bg-white divide-y divide-gray-100'>
+                              {transactions.map(transaction => (
+                                <tr key={transaction.id} className='bg-white'>
+                                  <td className='max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
+                                    <div className='flex'>
+                                      <a
+                                        href={transaction.href}
+                                        className='group inline-flex space-x-2 truncate text-sm'
+                                      >
+                                        {transaction.status !==
+                                        "not applicable" ? (
+                                          transaction.status === "increase" ? (
+                                            <img src={increase} alt='' />
+                                          ) : (
+                                            <img src={decrease} alt='' />
+                                          )
+                                        ) : (
+                                          <img src={notApplicable} alt='' />
+                                        )}
+                                        <p className='text-gray-500 truncate group-hover:text-gray-900'>
+                                          {transaction.name}
+                                        </p>
+                                      </a>
+                                    </div>
+                                  </td>
+                                  <td className='px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500'>
+                                    <span className='text-[#6366F1] font-medium'>
+                                      {transaction.view}
+                                      <ArrowRightIcon
+                                        className={`inline w-4`}
+                                      />{" "}
+                                    </span>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Activity list (smallest breakpoint only) */}
+                  <div className='shadow sm:hidden w-[50%] bg-white'>
+                    <div className='px-4 sm:px-6 lg:px-8'>
+                      <div className='sm:flex sm:items-center'>
+                        <div className='sm:flex-auto'>
+                          <h1 className='text-xl font-semibold text-gray-900'>
+                            Income/Expenses
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <ul
+                      role='list'
+                      className='mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden'
+                    >
+                      {transactionss.map(transaction => (
+                        <li key={transaction.id}>
+                          <a
+                            href={transaction.href}
+                            className='block px-4 py-4 bg-white hover:bg-gray-50'
+                          >
+                            <span className='flex items-center space-x-4'>
+                              <span className='flex-1 flex space-x-2 truncate'>
+                                {transaction.status !== "not applicable" ? (
+                                  transaction.status === "increase" ? (
+                                    <img src={increase} alt='' />
+                                  ) : (
+                                    <img src={decrease} alt='' />
+                                  )
+                                ) : (
+                                  <img src={notApplicable} alt='' />
+                                )}
+                                <span className='flex flex-col text-gray-500 text-sm truncate'>
+                                  <span className='truncate'>
+                                    {transaction.name}
+                                  </span>
+                                  <span>
+                                    <span className='text-gray-900 font-medium'>
+                                      {transaction.amount}
+                                    </span>
+                                  </span>
+                                  <time dateTime={transaction.datetime}>
+                                    {transaction.date}
+                                  </time>
+                                </span>
+                              </span>
+                              <ChevronRightIcon
+                                className='flex-shrink-0 h-5 w-5 text-gray-400'
+                                aria-hidden='true'
+                              />
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Activity table (small breakpoint and up) */}
+                  <div className='hidden sm:block w-[50%] bg-white'>
+                    <div className='px-4 sm:px-6 lg:px-8'>
+                      <div className='sm:flex sm:items-center'>
+                        <div className='sm:flex-auto'>
+                          <h1 className='text-xl font-semibold text-gray-900'>
+                            Income/Expenses
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='max-w-6xl mx-auto'>
+                      <div className='flex flex-col mt-2'>
+                        <div className='align-middle min-w-full overflow-x-auto shadow overflow-hidden sm:rounded-lg'>
+                          <table className='min-w-full divide-y divide-gray-200'>
+                            <thead>
+                              <tr>
+                                <th className='px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                                  Today
+                                </th>
+                                <th className='px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                                  Amount
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody className='bg-white divide-y divide-gray-200'>
+                              {transactionss.map(transaction => (
+                                <tr key={transaction.id} className='bg-white'>
+                                  <td className='max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
+                                    <div className='flex'>
+                                      <a
+                                        href={transaction.href}
+                                        className='group inline-flex space-x-2 truncate text-sm'
+                                      >
+                                        {transaction.status !==
+                                        "not applicable" ? (
+                                          transaction.status === "increase" ? (
+                                            <img src={increase} alt='' />
+                                          ) : (
+                                            <img src={decrease} alt='' />
+                                          )
+                                        ) : (
+                                          <img src={notApplicable} alt='' />
+                                        )}
+                                        <p className='text-gray-500 truncate group-hover:text-gray-900'>
+                                          {transaction.name}
+                                        </p>
+                                      </a>
+                                    </div>
+                                  </td>
+                                  <td className='px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500'>
+                                    {transaction.status !== "not applicable" ? (
+                                      transaction.status === "increase" ? (
+                                        <span className='text-green-500 font-medium'>
+                                          ${transaction.amount}
+                                        </span>
+                                      ) : (
+                                        <span className='text-gray-900 font-medium'>
+                                          ${transaction.amount}
+                                        </span>
+                                      )
+                                    ) : (
+                                      <span className='text-gray-900 font-medium line-through'>
+                                        ${transaction.amount}
+                                      </span>
+                                    )}{" "}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 {/* /End replace */}
               </div>
@@ -529,3 +1673,220 @@ export function Example() {
     </>
   );
 }
+
+const stats = [
+  {
+    id: 1,
+    name: "Acne Plus",
+    title: "SALES",
+    stat: "$24.780",
+    icon: RightCarat1,
+    change: "49%",
+    changeType: "increase",
+    lineChart: lineChart1,
+  },
+  {
+    id: 2,
+    name: "Acne Advanced",
+    title: "SALES",
+    stat: "$17.489",
+    icon: RightCarat2,
+    change: "14%",
+    changeType: "decrease",
+    lineChart: lineChart2,
+  },
+  {
+    id: 3,
+    name: "Acne Professional",
+    title: "SALES",
+    stat: "$9.962",
+    icon: RightCarat3,
+    change: "29%",
+    changeType: "increase",
+    lineChart: lineChart3,
+  },
+];
+
+function classNames2(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const transactions = [
+  {
+    id: 1,
+    name: "Nick Mark mentioned Sara Smith in a new post ",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  {
+    id: 2,
+    name: "The post Post Name was removed by Nick Mark",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  {
+    id: 3,
+    name: "Patrick Sullivan published a new post ",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  {
+    id: 4,
+    name: "YESTERDAY",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  {
+    id: 5,
+    name: "240+ users have subscribed to Newsletter #1 ",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  {
+    id: 6,
+    name: "The post Post Name was suspended by Nick Mark",
+    href: "#",
+    view: "view",
+    status: "success",
+  },
+  // More transactions...
+];
+
+const transactionss = [
+  {
+    id: 1,
+    name: "Qonto billing",
+    href: "#",
+    amount: "-$49.88",
+    status: "decrease",
+  },
+  {
+    id: 2,
+    name: "App.com Market Ltd 70 Wilson St London",
+    href: "#",
+    amount: "+249.88",
+    status: "increase",
+  },
+  {
+    id: 3,
+    name: "Notion Labs Inc",
+    href: "#",
+    amount: "+99.99",
+    status: "increase",
+  },
+  {
+    id: 4,
+    name: "Market Cap Ltd ",
+    href: "#",
+    amount: "+1.200,88",
+    status: "increase",
+  },
+  {
+    id: 5,
+    name: "App.com Market Ltd 70 Wilson St London",
+    href: "#",
+    amount: "+̶99.99",
+    status: "not applicable",
+  },
+  {
+    id: 6,
+    name: "Cruip.com Market Ltd 70 Wilson St London",
+    href: "#",
+    amount: "-$49.88",
+    status: "decrease",
+  },
+  // More transactions...
+];
+const statusStyles = {
+  success: "bg-green-100 text-green-800",
+  processing: "bg-yellow-100 text-yellow-800",
+  failed: "bg-gray-100 text-gray-800",
+};
+
+const people = [
+  {
+    image: <img src={customerImage1} alt='' />,
+    name: "Alex Shatov",
+    email: "alexshatov@gmail.com",
+    spent: "$2.249.88",
+    country: "country",
+  },
+  {
+    image: <img src={customerImage2} alt='' />,
+    name: "Philip Harbach",
+    email: "philip.h@gmail.com",
+    spent: "$2.022.47",
+    country: "country",
+  },
+  {
+    image: <img src={customerImage3} alt='' />,
+    name: "Mirko Fisuk",
+    email: "mirkofisuk@gmail.com",
+    spent: "$2.016.04",
+    country: "country",
+  },
+  {
+    image: <img src={customerImage4} alt='' />,
+    name: "Olga Semklo",
+    email: "olga.s@cool.design",
+    spent: "$1.944.19",
+    country: "country",
+  },
+  {
+    image: <img src={customerImage5} alt='' />,
+    name: "Burak Long",
+    email: "longburak@gmail.com",
+    spent: "$1.766.14",
+    country: "country",
+  },
+  // More people...
+];
+
+const people4 = [
+  {
+    image: <img src={customerImage1} alt='' />,
+    source: "Github.com",
+    visitors: "2.4K",
+    revenues: "$3.877",
+    sales: "267",
+    conversions: "4.7%",
+  },
+  {
+    image: <img src={customerImage1} alt='' />,
+    source: "Twitter",
+    visitors: "2.2K",
+    revenues: "$3.426",
+    sales: "249",
+    conversions: "4.2%",
+  },
+  {
+    image: <img src={customerImage1} alt='' />,
+    source: "Google ( organic )",
+    visitors: "2.0K",
+    revenues: "$2.444",
+    sales: "224",
+    conversions: "4.2%",
+  },
+  {
+    image: <img src={customerImage1} alt='' />,
+    source: "Viemo.com",
+    visitors: "1.9K",
+    revenues: "$2.236",
+    sales: "220",
+    conversions: "4.2%",
+  },
+  {
+    image: <img src={customerImage1} alt='' />,
+    source: "Indiehackers.com",
+    visitors: "1.7K",
+    revenues: "$2.034",
+    sales: "204",
+    conversions: "3.9%",
+  },
+  // More people...
+];
